@@ -1,14 +1,49 @@
-colorify({
-    container: 'colorify-main-color',
-    accuracy: 10,
-    padding: true,
-    give: {
-        property: 'background',
-        target: '.container, .btn'
+const next_btn = document.querySelector('.btn-next')
+const prev_btn = document.querySelector('.btn-prev')
+const images = document.querySelectorAll('.image')
+const carousel = document.querySelector('.carousel')
+
+let jump = 500
+let idx = 0
+
+let interval = setInterval(run, 2000)
+
+function run() {
+    idx++
+    changeImage()
+    console.log(idx)
+}
+
+
+function changeImage() {
+    if(idx > images.length - 1) {
+        idx = 0
     }
-});
+    else if(idx < 0) {
+        idx = images.length - 1
+    }
+    carousel.style.transform = `translate(-${jump*idx}px)`
+}
+
+next_btn.addEventListener('click', jumpImageNext)
+
+function resetInterval() {
+    clearInterval(interval)
+    interval = setInterval(run, 2000)
+}
+
+function jumpImageNext() {
+    resetInterval()
+    idx++
+    changeImage()
+}
 
 
-const image_el = document.querySelector('.imaginhop')
+function jumpImagePrev() {
+    resetInterval()
+    idx--
+    changeImage()
+}
 
-image_el.setAttribute('colorify-main-color', 'colorify-main-color')
+
+prev_btn.addEventListener('click', jumpImagePrev)

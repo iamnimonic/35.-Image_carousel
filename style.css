@@ -15,6 +15,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: white;
     height: 100vh;
     margin: 0;
 }
@@ -29,18 +30,20 @@ body {
 }
 
 .images-container {
-    display: flex;
     width: 50rem;
     height: 60rem;
     overflow: hidden;
-    justify-content: flex-start;
     align-items: center;
     border-radius: .5rem;
     box-shadow: 0 0 8px rgba(0,0,0,.2);
 }
 
-.images-container img {
-    animation: translate_img 6s linear;
+.carousel {
+    width: fit-content;
+    transform: translate(0);
+    transition: transform .3s linear;
+    height: auto;
+    display: flex;
 }
 
 .btn {
@@ -48,8 +51,7 @@ body {
     color: white;
     width: 20rem;
     font-size: 1.7rem;
-    /* height: 3rem; */
-    background-color: grey;
+    background-color:gray;
     margin: .5rem 2rem;
     padding: 1rem 0;
     border: 1px solid rgba(0,0,0,.2);
@@ -74,24 +76,6 @@ body {
     justify-content: center;
 }
 
-@keyframes translate_img {
-    10% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-500px);
-    }
-    40% {
-        transform: translate(-1000px);
-    }
-    60% {
-        transform: translate(-1500px);
-    }
-    80% {
-        transform: translate(-2000px);
-    }
-    100% {
-        transform: translate(-2500px);
-    }
+.moved {
+    transform: translate(-40rem);
 }
